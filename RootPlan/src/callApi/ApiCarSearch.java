@@ -107,7 +107,33 @@ public class ApiCarSearch {
    }
 
    public void resultOrderCall(int[] result, int start, int end) { //결과 순서로 api 호출
-	   if(start==end) listSize++;
+	   if(start==end) {
+		   try {		   
+			   for(int i =0; i < listSize; i++) {
+				   if(i == listSize - 1) {
+					   dataTotal.carList.add(callResultCar( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
+							   ad.get(result[0]).getLat(), ad.get(result[0]).getLng()));
+					   Thread.sleep(750);
+				   }else {
+					   dataTotal.carList.add(callResultCar( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
+							   ad.get(result[i+1]).getLat(), ad.get(result[i+1]).getLng()));
+					   Thread.sleep(750);
+				   }
+			   }
+			} catch (Exception e) {
+				System.out.println("문제발생쓰");
+			} 
+	   }else{
+		   try {		   
+			   for(int i =0; i < listSize-1; i++) {
+				   dataTotal.carList.add(callResultCar( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
+						   ad.get(result[i+1]).getLat(), ad.get(result[i+1]).getLng()));
+				   Thread.sleep(750);
+			   }
+			} catch (Exception e) {
+				System.out.println("문제발생쓰");
+			} 
+	   }
 	   
 	   System.out.println("차 결과 api호출");
 		  for(int i =0;i<listSize-1;i++)
@@ -118,15 +144,6 @@ public class ApiCarSearch {
 		   System.out.print(result[i]+ " ");
 	   }
 	   System.out.println();
-	   try {		   
-		   for(int i =0; i < listSize-1; i++) {
-			   dataTotal.carList.add(callResultCar( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
-					   ad.get(result[i+1]).getLat(), ad.get(result[i+1]).getLng()));
-			   Thread.sleep(750);
-		   }
-		} catch (Exception e) {
-			System.out.println("문제발생쓰");
-		} 
    }
 
    // 마지막에 결과 재호출해서 한노드에서 한 노드로 총 정보 가져오기 

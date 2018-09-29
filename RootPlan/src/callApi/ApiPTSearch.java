@@ -161,13 +161,24 @@ public class ApiPTSearch {
    }
 
   public void resultOrderCall(int[] result, int start, int end) {  //결과대로 호출
-	  if(start==end) listSize++;  
-	  System.out.println("문제!!!!!!!!!!!!!!!!!!!!!!"+ listSize);
-      for(int i =0; i < listSize -1; i++) {
-    	  System.out.println("i:"+i);
-    	  dataTotal.ptList.add(callResultPT( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
-               ad.get(result[i+1]).getLat(), ad.get(result[i+1]).getLng(), result[i],result[i+1]));
-      }
+	  if(start==end) {
+		  for(int i =0; i < listSize ; i++) {
+	    	  if(i == listSize - 1) {
+	    		  dataTotal.ptList.add(callResultPT( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
+			               ad.get(result[0]).getLat(), ad.get(result[0]).getLng(), result[i], result[0]));
+	    	  }else {
+		    	  dataTotal.ptList.add(callResultPT( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
+		               ad.get(result[i+1]).getLat(), ad.get(result[i+1]).getLng(), result[i],result[i+1]));
+	    	  }
+	      }
+	  }else {
+		  System.out.println("문제!!!!!!!!!!!!!!!!!!!!!!"+ listSize);
+	      for(int i =0; i < listSize -1; i++) {
+	    	  System.out.println("i:"+i);
+	    	  dataTotal.ptList.add(callResultPT( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
+	               ad.get(result[i+1]).getLat(), ad.get(result[i+1]).getLng(), result[i],result[i+1]));
+	      }
+	  }
   }
   
   // 대중교통 재호출할 때, 마지막에 결과 한노드에서 한 노드로 총 정보 가져오기 
