@@ -24,7 +24,7 @@ $.ajaxSetup({
 function clickADDBtn(){
 	if(flag == 1){
 		$.ajax({
-			url:"/RootPlan/AddressDataServlet",
+			url:"/AddressDataServlet",
 			dataType: "html",
 			data: $("#saveAddress").serialize()+"&customerID="+customerID,
 			success: function(data){
@@ -51,7 +51,7 @@ function getData(){
 	clean();
 	getDataSize(1);
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "xml",
 		data: $("#getAddressData").serialize()+"&customerID="+customerID,
 		success: function(data){
@@ -99,7 +99,7 @@ function getData(){
 $("#addressBasket").on("click", '#resetBtn' , function(){
 	if(confirm("데이터를 초기화 하시겠습니까?") == true){
 		$.ajax({
-			url:"/RootPlan/AddressDataServlet",
+			url:"/AddressDataServlet",
 			dataType: "html",
 			data: $("#initData").serialize()+"&customerID="+customerID,
 			success: function(data){
@@ -130,7 +130,7 @@ $("#list").on("click", '#del' , function(){
 	if(confirm("삭제하시겠습니까?") == true){
 		document.deleteAddress.deleteIndex.value = $(this).attr("name");
 		$.ajax({
-			url:"/RootPlan/AddressDataServlet",
+			url:"/AddressDataServlet",
 			dataType: "text",
 			data: $("#deleteAddress").serialize()+"&customerID="+customerID,
 			success:function(data){				
@@ -151,7 +151,7 @@ $("#list").on("click", '#del' , function(){
 
 function getDataSize(num){	
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "text",
 		data: $("#getSize").serialize()+"&customerID="+customerID,
 		success:function(data){				

@@ -47,7 +47,7 @@ function sendCustomerInfo(){
 	age = sessionStorage.getItem("age");
 	
 	$.ajax({
-		url:"/RootPlan/LoginServlet",
+		url:"/LoginServlet",
 		dataType: "text",
 		async: false,
 		data:"menuIndex=0&email="+email+"&cID="+id+"&gender="+gender+"&age="+age,
@@ -64,7 +64,7 @@ function sendCustomerInfo(){
 
 function ListInit(){ 
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "text",
 		async: false,
 		data:"menuIndex=24&customerID="+customerID
@@ -75,12 +75,12 @@ function killSession(){
    sessionStorage.clear();
    console.log("killSession");
    $.ajax({
-      url:"/RootPlan/LoginServlet",
+      url:"/LoginServlet",
       dataType: "text",
       data: "menuIndex=1&cID="+id
    });
    $.ajax({
-	      url:"/RootPlan/AddressDataServlet",
+	      url:"/AddressDataServlet",
 	      dataType: "text",
 	      data: "menuIndex=23&cID="+id+"&customerID="+customerID
 	   });

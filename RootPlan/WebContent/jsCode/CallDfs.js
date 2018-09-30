@@ -7,7 +7,7 @@ var ptFlag = 0;
 var carFlag = 0;
 function start() {
 	$.ajax({
-		url : "/RootPlan/AddressDataServlet",
+		url : "/AddressDataServlet",
 		dataType : "html",
 		data : $("#finish1").serialize()+"&customerID="+customerID, //0
 		success : function(data) {
@@ -19,7 +19,7 @@ function start() {
 		}
 	});
 	$.ajax({
-		url : "/RootPlan/AddressDataServlet",
+		url : "/AddressDataServlet",
 		dataType : "html",
 		data : $("#finish2").serialize()+"&customerID="+customerID, //1
 		success : function(data) {
@@ -33,7 +33,7 @@ function start() {
 function callResultPT() { //대중교통
 	$.ajax({ //dfs, 결과 순서 다시 재 호출
 		type : "POST",
-		url : "/RootPlan/AddressDataServlet",
+		url : "/AddressDataServlet",
 		dataType : "text",
 		data : $("#finishCallDFS1").serialize()+"&customerID="+customerID, //0
 		success : function(data) {
@@ -48,7 +48,7 @@ function callResultPT() { //대중교통
 function callResultCar() { //자동차   
 	$.ajax({ //dfs, 결과 순서 다시 재 호출
 		type : "POST",
-		url : "/RootPlan/AddressDataServlet",
+		url : "/AddressDataServlet",
 		dataType : "html",
 		data : $("#finishCallDFS2").serialize()+"&customerID="+customerID, //1
 		success : function() {

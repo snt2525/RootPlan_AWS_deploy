@@ -29,7 +29,7 @@ var map2;
 $.ajax({
 	contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 	type : "post",
-	url:"/RootPlan/AddressDataServlet",
+	url:"/AddressDataServlet",
 	dataType: "xml",
 	data:  $("#Init").serialize()+"&customerID="+customerID,
 	success: function(data){

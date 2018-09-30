@@ -7,7 +7,7 @@ function isChecked_L(index){ //0:START,1:FINAL , i: 넘버
 	//marker을 다시 전부 초기화 한다.
 	cleanMap();
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "xml",
 		data: $("#callLatLng").serialize()+"&customerID="+customerID,
 		success: function(data){
@@ -50,7 +50,7 @@ function isChecked_L(index){ //0:START,1:FINAL , i: 넘버
 
 function saveIndex(){  //start, last 데이터를 저장해 둔다.
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "html",
 		data: $("#setIndexData").serialize()+"&customerID="+customerID,
 		success: function(data){
@@ -82,7 +82,7 @@ function possibleNext(){
 
 function getDataFourth(){ 
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "xml",
 		data: $("#mData").serialize()+"&customerID="+customerID,
 		success: function(data){

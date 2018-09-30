@@ -27,7 +27,7 @@ var imgIconUrl = [
 function checkSave(){
    var id = sessionStorage.getItem("id");
    $.ajax({
-      url:"/RootPlan/AddressDataServlet",
+      url:"/AddressDataServlet",
       dataType: "text",
       data: "menuIndex=0&customerID="+customerID+"&cID="+id+"&what=0",
       success: function(data){
@@ -60,7 +60,7 @@ function save(){
    var name = prompt("저장할 경로의 이름을 입력해 주세요.");
    var id = sessionStorage.getItem("id","");
    $.ajax({
-      url:"/RootPlan/AddressDataServlet",
+      url:"/AddressDataServlet",
       dataType: "text",
       data: "menuIndex=0&customerID="+customerID+"&cID="+id+"&what=1&name="+name,
       success: function(data){
@@ -101,7 +101,7 @@ function tabClick(title){
 function showResultPT(){
    $.ajax({   //pt list에 뿌려줌
          type: "POST",
-          url:"/RootPlan/AddressDataServlet",
+          url:"/AddressDataServlet",
           async:false,
           dataType: "xml",
           data:  $("#showPT").serialize()+"&customerID="+customerID,
@@ -227,7 +227,7 @@ function showResultPT(){
 function showResultCar(){
    $.ajax({   //car list에 뿌려줌
          type: "POST",
-          url:"/RootPlan/AddressDataServlet",
+          url:"/AddressDataServlet",
           async:false,
           dataType: "xml",
           data:  $("#showCar").serialize()+"&customerID="+customerID,
@@ -313,7 +313,7 @@ var polyline2 = new naver.maps.Polyline({
 function callPolyLine(title){ // 0:pt, 1:car
 	$.ajax({   //dfs, 결과 순서 다시 재 호출
 		   type: "POST",
-	       url:"/RootPlan/AddressDataServlet",
+	       url:"/AddressDataServlet",
 	       dataType: "html",
 	       data:  $("#resultPoly").serialize()+"&customerID="+customerID,
 	       success: function(data){
@@ -368,7 +368,7 @@ var line = new Array(10000);
 function callResult(){   
    $.ajax({   //dfs, 결과 순서 다시 재 호출
          type: "POST",
-          url:"/RootPlan/AddressDataServlet",
+          url:"/AddressDataServlet",
           dataType: "html",
           data:  $("#resultLatLng").serialize()+"&customerID="+customerID,
           success: function(data){

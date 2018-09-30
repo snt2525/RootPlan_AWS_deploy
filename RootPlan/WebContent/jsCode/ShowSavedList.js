@@ -35,7 +35,7 @@ function showList(){ // 저장된 데이터 리스트 보여주는 함수
 	
 	// addressServlet 6번으로 가기
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "xml", 
 		data: "menuIndex=6&customerID="+customerID+"&cID="+sessionStorage.getItem("id"),
 		success: function(data){
@@ -76,7 +76,7 @@ function showList(){ // 저장된 데이터 리스트 보여주는 함수
 function goLoading(rID){
 	alert("경로 보는 페이지로 넘어갑니다.");
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "text", 
 		data: "menuIndex=19&customerID="+customerID+"&cID="+id+"&rID="+rID,
 		success: function(data){
@@ -91,7 +91,7 @@ function goLoading(rID){
 
 function goMain(rID){
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "text", 
 		data: "menuIndex=19&customerID="+customerID+"&cID="+id+"&rID="+rID,
 		success: function(data){
@@ -107,7 +107,7 @@ function goMain(rID){
 
 function goDelete(name, rID){
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "text", 
 		data: "menuIndex=22&customerID="+customerID+"&cID="+id+"&rID="+rID,
 		success: function(data){

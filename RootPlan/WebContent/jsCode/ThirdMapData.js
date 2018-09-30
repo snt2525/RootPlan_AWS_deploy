@@ -7,7 +7,7 @@ function isChecked_S(index){ //0:START,1:FINAL , i: 넘버
 	//marker을 다시 전부 초기화 한다.
 	cleanMap();
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "xml",
 		data: $("#callLatLng").serialize()+"&customerID="+customerID,
 		success: function(data){
@@ -43,7 +43,7 @@ function isChecked_S(index){ //0:START,1:FINAL , i: 넘버
 
 function saveIndex(){  //start, last 데이터를 저장해 둔다.
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "html",
 		data: $("#setIndexData").serialize()+"&customerID="+customerID,
 		success: function(data){
@@ -70,7 +70,7 @@ function possibleNext(){
 	}else{
 		$.ajax({
 			contentType:'application/x-www-form-urlencoded;charset=UTF-8', 
-			url:"/RootPlan/AddressDataServlet",
+			url:"/AddressDataServlet",
 			dataType: "text",
 			data:  $("#possible").serialize()+"&customerID="+customerID,
 			success:function(data){	
@@ -80,14 +80,14 @@ function possibleNext(){
 					document.apiAB.b.value = "4";
 					document.apiAB.carBlock.value = "0";
 					$.ajax({
-						url:"/RootPlan/AddressDataServlet",
+						url:"/AddressDataServlet",
 						data: $("#apiAB").serialize()+"&customerID="+customerID
 					});	
 					document.apiAB.a.value = "4";
 					document.apiAB.b.value = String(size);
 					document.apiAB.carBlock.value = "1";
 					$.ajax({
-						url:"/RootPlan/AddressDataServlet",
+						url:"/AddressDataServlet",
 						data: $("#apiAB").serialize()+"&customerID="+customerID
 					});	
 				}else{ // 자동차 
@@ -95,7 +95,7 @@ function possibleNext(){
 					document.apiAB.b.value = String(size);
 					document.apiAB.carBlock.value = "0";
 					$.ajax({
-						url:"/RootPlan/AddressDataServlet",
+						url:"/AddressDataServlet",
 						data: $("#apiAB").serialize()+"&customerID="+customerID
 					});
 				}	
@@ -112,7 +112,7 @@ function possibleNext(){
 //모든 데이터 호출 
 function getDataThird(){
 	$.ajax({
-		url:"/RootPlan/AddressDataServlet",
+		url:"/AddressDataServlet",
 		dataType: "xml",
 		data: $("#getAddressData").serialize()+"&customerID="+customerID,
 		success: function(data){
