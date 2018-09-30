@@ -22,6 +22,16 @@ html, body {
 	width: 25%;
 	border-right: 1px solid #a7a7a7;
 	background-color: #fff;
+}
+
+#asideLast {
+	position: absolute; /* relative로 하는 것도 이쁘다 */
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 25%;
+	border-right: 1px solid #a7a7a7;
+	background-color: #fff;
 	overflow: auto;
 }
 

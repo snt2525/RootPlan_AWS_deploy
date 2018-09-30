@@ -25,6 +25,7 @@ public class ApiPTSearch {
    boolean flag = false; // 대중교통에서 걷기 api호출에 쿨타임을 주기 위해서 만들었다.
    boolean isSame=false;
    int adSize;
+   //boolean errorExist = false;
 
    // 생성자, 이차원 배열 초기화
    public ApiPTSearch(LinkedList<dto.Address> ad, DataTotal dataTotal, int listSize) {
@@ -130,7 +131,7 @@ public class ApiPTSearch {
             array = data.split("\"");
             for (int k = 0; k < array.length; k++) {
                if(array[k].equals("code")) {     //700m 이하로 문제 발생
-            	   System.out.println("문제있음=============="); 
+            	   System.out.println("문제있음=============="+ sb); 
                    //에러가 발생하면 걷기로 대체 
                    int tmpTime = 0;
                    if (flag == true) {
@@ -161,8 +162,10 @@ public class ApiPTSearch {
    }
 
   public void resultOrderCall(int[] result, int start, int end) {  //결과대로 호출
+	  dataTotal.setError(false);
 	  if(start==end) {
 		  for(int i =0; i < listSize ; i++) {
+			  if(dataTotal.isError()) return;
 	    	  if(i == listSize - 1) {
 	    		  dataTotal.ptList.add(callResultPT( ad.get(result[i]).getLat(), ad.get(result[i]).getLng(),
 			               ad.get(result[0]).getLat(), ad.get(result[0]).getLng(), result[i], result[0]));
@@ -172,6 +175,7 @@ public class ApiPTSearch {
 	    	  }
 	      }
 	  }else {
+		  if(dataTotal.isError()) return;
 		  System.out.println("문제!!!!!!!!!!!!!!!!!!!!!!"+ listSize);
 	      for(int i =0; i < listSize -1; i++) {
 	    	  System.out.println("i:"+i);
@@ -194,6 +198,10 @@ public class ApiPTSearch {
             try {
                Thread.sleep(1500);
                infopt = ws.resultWalkPTApi(sx, sy, ex, ey); 
+               if(infopt.isError()) {
+            	   dataTotal.setError(true);
+            	   return infopt;
+               }
             } catch (Exception e) {}
          } else {
             infopt = ws.resultWalkPTApi(sx, sy, ex, ey);

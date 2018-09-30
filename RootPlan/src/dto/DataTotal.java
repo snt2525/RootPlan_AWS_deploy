@@ -10,7 +10,9 @@ public class DataTotal {
     public LinkedList<InfoCar> carList;
     public LinkedList<InfoPT> ptList;
     int listSize;
-    
+    private String errorMsg;  // 에러 메세지
+	private boolean error; // error 존재시 1, 없으면 0
+	
     public DataTotal(int listSize) {
     	listSize++; // 사이클이 생성될 경우를 대비
     	this.listSize = listSize;
@@ -20,7 +22,27 @@ public class DataTotal {
         ptAns = new int[listSize];
         carList = new LinkedList<InfoCar>();
         ptList = new LinkedList<InfoPT>();
+        error = false;
     }
+    
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
+
+	public boolean isError() {
+		return error;
+	}
+
+
+	public void setError(boolean error) {
+		this.error = error;
+	}
     
     public void initPtDist() {
     	 for (int i = 0; i < listSize; i++) {

@@ -95,11 +95,14 @@ public class ApiWalkSearch{
 				con.disconnect();
 				String data = sb.toString();
 
-				System.out.println("d실패" + data);				
+				System.out.println("d실패" + data);	
+				infopt.setError(true);
+				return infopt;
 			}
 			sb = new StringBuilder();
+			
 			String line;
-
+			
 			while ((line = br.readLine()) != null) {
 				sb.append(line + "\n");
 			}
@@ -107,10 +110,14 @@ public class ApiWalkSearch{
 			br.close();
 			con.disconnect();
 			String data = sb.toString();
-
+			
+			
 			String[] array;
 			array = data.split("<|>");
 
+			
+			System.out.println("성공 : " + data);
+			
 			for (int i = 0; i < array.length; i++) {
 				if (array[i].equals("id")){
 					Thread.sleep(550);

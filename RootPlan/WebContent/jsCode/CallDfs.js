@@ -34,9 +34,13 @@ function callResultPT() { //대중교통
 	$.ajax({ //dfs, 결과 순서 다시 재 호출
 		type : "POST",
 		url : "/RootPlan/AddressDataServlet",
-		dataType : "html",
+		dataType : "text",
 		data : $("#finishCallDFS1").serialize()+"&customerID="+customerID, //0
-		success : function() {
+		success : function(data) {
+			if(data == "1"){
+				alert("경로를 제공하지 않습니다.")
+				location.href="Second.html";
+			}
 			ptFlag = 1;
 		}
 	});

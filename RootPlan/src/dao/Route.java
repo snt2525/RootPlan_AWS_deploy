@@ -130,7 +130,7 @@ public class Route {
 
    public void recallApiData(int how, int start, int end) {
 	   if(how == 0) {
-		   pt.resultOrderCall(dataTotal.ptAns, start, end);
+		   pt.resultOrderCall(dataTotal.ptAns, start, end);			
 	   }
 	   else {
 		  cs.resultOrderCall(dataTotal.carAns, start, end);

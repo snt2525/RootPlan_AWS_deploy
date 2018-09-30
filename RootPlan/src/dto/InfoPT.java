@@ -17,10 +17,13 @@ public class InfoPT {
 	//private int stationCount; // stationCount로  DataPair 정보 가짐
 	private LinkedList<InfoSectionPT> section; // 환승 정보, cntTransfer만큼 만들기
 	private LinkedList<DataPair> lineList; // 환승에 상관없이 좌표는 연속적으로 저장
+	private String errorMsg;  // 에러 메세지
+	private boolean error; // error 존재시 1, 없으면 0
 	
 	public InfoPT(){
 		section = new LinkedList<InfoSectionPT>(); // 환승 없을 수도 있음
 		lineList = new LinkedList<DataPair>();
+		error = false;
 	}
 
 	
@@ -31,6 +34,26 @@ public class InfoPT {
 
 	public void setStationCount(int stationCount) {
 		this.stationCount = stationCount;
+	}
+
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
+
+	public boolean isError() {
+		return error;
+	}
+
+
+	public void setError(boolean error) {
+		this.error = error;
 	}
 
 
