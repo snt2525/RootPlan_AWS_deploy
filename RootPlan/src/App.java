@@ -1,5 +1,3 @@
-
-
 import java.io.File;
 
 import org.apache.catalina.WebResourceRoot;
@@ -29,9 +27,7 @@ public class App {
  
         tomcat.start();
         tomcat.getServer().await();
-    }
-    
-    
+    }   
 }
 
 
